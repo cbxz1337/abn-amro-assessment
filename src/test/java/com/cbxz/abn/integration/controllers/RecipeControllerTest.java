@@ -81,7 +81,7 @@ public class RecipeControllerTest extends BaseTest{
                 .andExpect(jsonPath("$.recipes[0].name").value(recipe.getName()))
                 .andExpect(jsonPath("$.recipes[0].serves").value(recipe.getServes()))
                 .andExpect(jsonPath("$.recipes[0].ingredients[0].id").value(ingredient.getId()))
-                .andExpect(jsonPath("$.recipes[0].instructions").value(recipe.getInstructions()));;
+                .andExpect(jsonPath("$.recipes[0].instructions").value(recipe.getInstructions()));
     }
 
     @Test

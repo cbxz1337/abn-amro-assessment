@@ -45,12 +45,6 @@ public class TestDataBuilder {
                 .build();
     }
 
-    public static Ingredient buildIngredient(String name) {
-        return Ingredient.builder()
-                .name("Name")
-                .build();
-    }
-
     public static UpdateIngredientRequest buildUpdateIngredientRequest(Long id) {
         return UpdateIngredientRequest.builder()
                 .id(id)
