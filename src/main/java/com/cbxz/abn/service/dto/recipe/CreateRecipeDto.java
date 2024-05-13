@@ -1,7 +1,10 @@
 package com.cbxz.abn.service.dto.recipe;
 
+import lombok.Builder;
+
 import java.util.List;
 
+@Builder
 public record CreateRecipeDto(
         String name,
         String instructions,

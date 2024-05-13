@@ -9,6 +9,7 @@ import com.cbxz.abn.controller.model.request.recipe.RecipeUpdateRequest;
 import com.cbxz.abn.domain.Ingredient;
 import com.cbxz.abn.domain.Recipe;
 import com.cbxz.abn.service.dto.ingredient.IngredientDto;
+import com.cbxz.abn.service.dto.recipe.CreateRecipeDto;
 import com.cbxz.abn.service.dto.recipe.RecipeDto;
 import com.cbxz.abn.service.dto.search.JoinType;
 import com.cbxz.abn.service.dto.search.Operation;
@@ -30,6 +31,24 @@ public class TestDataBuilder {
                 .build();
     }
 
+    public static RecipeDto buildRecipeDto() {
+        return RecipeDto.builder()
+                .name("NameOfDish")
+                .serves(4)
+                .isVegetarian(true)
+                .instructions("instructions")
+                .build();
+    }
+
+    public static CreateRecipeDto buildCreateRecipeDto() {
+        return CreateRecipeDto.builder()
+                .name("NameOfDish")
+                .serves(4)
+                .isVegetarian(true)
+                .instructions("instructions")
+                .build();
+    }
+
     public static Recipe buildRecipe() {
         return Recipe.builder()
                 .name("NameOfDish")
@@ -41,6 +60,12 @@ public class TestDataBuilder {
 
     public static Ingredient buildIngredient() {
         return Ingredient.builder()
+                .name("Name")
+                .build();
+    }
+
+    public static IngredientDto buildIngredientDto() {
+        return IngredientDto.builder()
                 .name("Name")
                 .build();
     }
