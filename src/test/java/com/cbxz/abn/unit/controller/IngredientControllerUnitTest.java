@@ -27,13 +27,15 @@ public class IngredientControllerUnitTest {
     @InjectMocks
     private IngredientControllerImpl ingredientController;
 
+   private final long id = 1L;
+
     @Test
     public void successfulCreationOfIngredient() {
-        when(ingredientService.create(Mockito.any(IngredientDto.class))).thenReturn(1L);
+        when(ingredientService.create(Mockito.any(IngredientDto.class))).thenReturn(id);
         val request = TestDataBuilder.buildIngredientRequest();
         val response = ingredientController.createIngredient(request);
         assertThat(response).isNotNull();
-        assertThat(response.id().longValue()).isEqualTo(1L);
+        assertThat(response.id().longValue()).isEqualTo(id);
     }
 
     @Test
@@ -41,10 +43,10 @@ public class IngredientControllerUnitTest {
         when(ingredientService.listIngredients(Mockito.any())).thenReturn(
                 PaginatedIngredientDto.builder()
                         .total(10)
-                        .ingredients(List.of(TestDataBuilder.ingredientResponseDto(1L)))
+                        .ingredients(List.of(TestDataBuilder.ingredientResponseDto(id)))
                         .build()
         );
         val response = ingredientController.listIngredients(0, 10);
-        assertThat(response.ingredients().getFirst().id().longValue()).isEqualTo(1L);
+        assertThat(response.ingredients().getFirst().id().longValue()).isEqualTo(id);
     }
 }

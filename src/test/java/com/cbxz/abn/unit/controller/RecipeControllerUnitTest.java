@@ -17,6 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,13 +32,15 @@ public class RecipeControllerUnitTest {
     @InjectMocks
     private RecipeControllerImpl recipeController;
 
+    private final long id = 1L;
+
     @Test
     public void successfulCreationOfRecipe() {
-        when(recipeService.createRecipe(Mockito.any(CreateRecipeDto.class))).thenReturn(1L);
+        when(recipeService.createRecipe(Mockito.any(CreateRecipeDto.class))).thenReturn(id);
         val request = TestDataBuilder.buildCreateRecipeRequest();
         val response = recipeController.createRecipe(request);
-        Assert.assertNotNull(response);
-        Assert.assertEquals(response.id().longValue(), 1L);
+        assertThat(response).isNotNull();
+        assertThat(response.id().longValue()).isEqualTo(id);
     }
 
     @Test
@@ -46,10 +49,10 @@ public class RecipeControllerUnitTest {
         when(recipeSearchService.getPaginatedRecipeDtos(Mockito.any())).thenReturn(
                 PaginatedRecipeDto.builder()
                         .total(10)
-                        .recipes(List.of(TestDataBuilder.recipeResponseDto(1L)))
+                        .recipes(List.of(TestDataBuilder.recipeResponseDto(id)))
                         .build()
         );
         val response = recipeController.getRecipesByFilter(request);
-        Assert.assertEquals(response.recipes().getFirst().id().longValue(), 1L);
+        Assert.assertEquals(response.recipes().getFirst().id().longValue(), id);
     }
 }
