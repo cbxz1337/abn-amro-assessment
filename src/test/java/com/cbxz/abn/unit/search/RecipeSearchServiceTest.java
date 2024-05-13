@@ -53,7 +53,7 @@ public class RecipeSearchServiceTest {
             new PaginationRequest(0, 10)
     );
 
-    @org.junit.Test
+    @Test
     @DisplayName(value = "wrong param type provided")
     public void wrongTypeProvidedTest() {
         Assert.assertThrows(IllegalArgumentException.class, () -> service.getPaginatedRecipeDtos(toFailFilter));
