@@ -31,9 +31,6 @@ All these requirements needs to be satisfied:
  ```
   $ mvn package
   ```
-Run the tests
-  ```
-  $ mvn test
   ```
 Run the project
   ```
