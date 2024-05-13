@@ -3,7 +3,6 @@ package com.cbxz.abn.unit.controller;
 import com.cbxz.abn.controller.recipe.RecipeControllerImpl;
 import com.cbxz.abn.service.dto.recipe.CreateRecipeDto;
 import com.cbxz.abn.service.dto.recipe.PaginatedRecipeDto;
-import com.cbxz.abn.service.dto.recipe.UpdateRecipeDto;
 import com.cbxz.abn.service.recipe.RecipeService;
 import com.cbxz.abn.service.search.service.RecipeSearchService;
 import com.cbxz.abn.utils.TestDataBuilder;

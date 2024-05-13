@@ -4,7 +4,6 @@ import com.cbxz.abn.domain.Recipe;
 import com.cbxz.abn.service.dto.search.Operation;
 import com.cbxz.abn.service.dto.search.SearchCriteria;
 import com.cbxz.abn.service.search.predicate.PredicateBuilder;
-
 import jakarta.persistence.criteria.*;
 
 import static com.cbxz.abn.service.search.predicate.PredicateBuilderUtils.ID;

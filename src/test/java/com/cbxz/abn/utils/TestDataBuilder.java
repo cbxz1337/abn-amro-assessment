@@ -20,6 +20,16 @@ import java.util.List;
 
 public class TestDataBuilder {
 
+    public static Recipe buildRecipe(List<Ingredient> ingredients) {
+        return Recipe.builder()
+                .name("NameOfDish")
+                .serves(4)
+                .isVegetarian(true)
+                .instructions("instructions")
+                .ingredient(ingredients)
+                .build();
+    }
+
     public static Recipe buildRecipe() {
         return Recipe.builder()
                 .name("NameOfDish")
@@ -30,6 +40,12 @@ public class TestDataBuilder {
     }
 
     public static Ingredient buildIngredient() {
+        return Ingredient.builder()
+                .name("Name")
+                .build();
+    }
+
+    public static Ingredient buildIngredient(String name) {
         return Ingredient.builder()
                 .name("Name")
                 .build();
@@ -79,13 +95,19 @@ public class TestDataBuilder {
                 .build();
     }
 
-    public static RecipeSearchRequest recipeSearchRequest(Recipe recipe) {
+    public static RecipeSearchRequest recipeSearchRequest(Recipe recipe, String ingredientName) {
         return RecipeSearchRequest.builder()
                 .filterRequests(List.of(
                         SearchCriteria.builder()
                                 .key(RecipeSearchKey.NAME)
                                 .operator(Operation.INCLUDES)
                                 .value(recipe.getName().substring(0, recipe.getName().length() - 1))
+                                .joinType(JoinType.AND)
+                                .build(),
+                        SearchCriteria.builder()
+                                .key(RecipeSearchKey.INGREDIENT_NAME)
+                                .operator(Operation.INCLUDES)
+                                .value(recipe.getName().substring(0, ingredientName.length() - 1))
                                 .joinType(JoinType.AND)
                                 .build()
                 )).pagination(

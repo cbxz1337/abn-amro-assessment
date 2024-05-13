@@ -67,11 +67,12 @@ public class RecipeControllerTest extends BaseTest{
     @Test
     @Transactional
     @Rollback
-    @DisplayName("")
+    @DisplayName("Search request 2 different predicates")
     public void searchRecipeRequest() throws Exception {
-        val recipe = TestDataBuilder.buildRecipe();
+        val ingredient = ingredientRepository.save(TestDataBuilder.buildIngredient());
+        val recipe = TestDataBuilder.buildRecipe(List.of(ingredient));
         val recipeId = recipeRepository.save(recipe).getId();
-        val recipeSearchRequest = TestDataBuilder.recipeSearchRequest(recipe);
+        val recipeSearchRequest = TestDataBuilder.recipeSearchRequest(recipe, ingredient.getName());
         mockMvc.perform(post("/api/v1/recipe/getByFilter")
                         .content(objectMapper.writeValueAsString(recipeSearchRequest))
                         .contentType(MediaType.APPLICATION_JSON))
@@ -79,6 +80,7 @@ public class RecipeControllerTest extends BaseTest{
                 .andExpect(jsonPath("$.recipes[0].id").value(recipeId))
                 .andExpect(jsonPath("$.recipes[0].name").value(recipe.getName()))
                 .andExpect(jsonPath("$.recipes[0].serves").value(recipe.getServes()))
+                .andExpect(jsonPath("$.recipes[0].ingredients[0].id").value(ingredient.getId()))
                 .andExpect(jsonPath("$.recipes[0].instructions").value(recipe.getInstructions()));;
     }
 

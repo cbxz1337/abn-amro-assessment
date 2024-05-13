@@ -1,7 +1,6 @@
 package com.cbxz.abn.service.ingredient;
 
 import com.cbxz.abn.domain.Ingredient;
-import com.cbxz.abn.domain.RecipeIngredientId;
 import com.cbxz.abn.exception.NotFoundException;
 import com.cbxz.abn.repository.IngredientRepository;
 import com.cbxz.abn.repository.RecipeIngredientRepository;

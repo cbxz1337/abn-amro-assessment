@@ -1,11 +1,9 @@
 package com.cbxz.abn.unit.service;
 
-import com.cbxz.abn.domain.Ingredient;
 import com.cbxz.abn.domain.Recipe;
 import com.cbxz.abn.exception.NotFoundException;
-import com.cbxz.abn.repository.IngredientRepository;
+import com.cbxz.abn.repository.RecipeIngredientRepository;
 import com.cbxz.abn.repository.RecipeRepository;
-import com.cbxz.abn.service.dto.ingredient.IngredientDto;
 import com.cbxz.abn.service.dto.recipe.UpdateRecipeDto;
 import com.cbxz.abn.service.ingredient.IngredientService;
 import com.cbxz.abn.service.recipe.RecipeServiceImpl;
@@ -20,6 +18,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RecipeServiceTest {
@@ -30,9 +29,11 @@ public class RecipeServiceTest {
     @Mock
     private IngredientService ingredientService;
 
+    @Mock
+    private RecipeIngredientRepository recipeIngredientRepository;
+
     @InjectMocks
     private RecipeServiceImpl recipeService;
-
 
     @Test
     public void successDelete() {

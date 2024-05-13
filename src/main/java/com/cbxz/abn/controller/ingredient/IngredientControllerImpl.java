@@ -6,7 +6,6 @@ import com.cbxz.abn.controller.model.request.ingredient.UpdateIngredientRequest;
 import com.cbxz.abn.controller.model.response.BaseCreatedResponse;
 import com.cbxz.abn.controller.model.response.IngredientResponse;
 import com.cbxz.abn.controller.model.response.PaginatedIngredientResponse;
-import com.cbxz.abn.domain.RecipeIngredient;
 import com.cbxz.abn.service.dto.Pagination;
 import com.cbxz.abn.service.ingredient.IngredientService;
 import com.cbxz.abn.service.recipe.RecipeService;

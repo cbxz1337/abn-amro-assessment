@@ -43,6 +43,6 @@ public class RecipeControllerImpl implements RecipeController {
 
     @Override
     public void updateRecipe(@RequestBody @Valid RecipeUpdateRequest request) {
-       recipeService.update(ApiMapper.toUpdateRecipeDto(request));
+        recipeService.update(ApiMapper.toUpdateRecipeDto(request));
     }
 }

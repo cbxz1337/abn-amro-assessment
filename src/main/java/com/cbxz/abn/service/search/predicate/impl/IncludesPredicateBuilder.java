@@ -1,8 +1,6 @@
 package com.cbxz.abn.service.search.predicate.impl;
 
-import com.cbxz.abn.domain.Ingredient;
 import com.cbxz.abn.domain.Recipe;
-import com.cbxz.abn.domain.RecipeIngredient;
 import com.cbxz.abn.service.dto.search.Operation;
 import com.cbxz.abn.service.dto.search.SearchCriteria;
 import com.cbxz.abn.service.search.predicate.PredicateBuilder;
@@ -27,12 +25,16 @@ public class IncludesPredicateBuilder implements PredicateBuilder {
                     .where(
                             cb.and(
                                     cb.equal(subRoot.get(RECIPE_TABLE_NAME).get(ID), root.get(ID)),
-                                    cb.like(subRoot.get(criteria.key().getJoinTable()).get(criteria.key().getKeyName()), value)
+                                    cb.like(
+                                            cb.lower(subRoot.get(criteria.key().getJoinTable())
+                                                    .get(criteria.key().getKeyName())),
+                                            value.toLowerCase()
+                                    )
                             )
                     );
             return cb.exists(subquery);
         } else {
-            return cb.like(root.get(criteria.key().getKeyName()), value);
+            return cb.like(cb.lower(root.get(criteria.key().getKeyName())), value.toLowerCase());
         }
     }
 }

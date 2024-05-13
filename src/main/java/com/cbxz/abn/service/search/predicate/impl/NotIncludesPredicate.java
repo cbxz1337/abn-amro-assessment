@@ -1,14 +1,11 @@
 package com.cbxz.abn.service.search.predicate.impl;
 
-import com.cbxz.abn.domain.Ingredient;
 import com.cbxz.abn.domain.Recipe;
-import com.cbxz.abn.domain.RecipeIngredient;
 import com.cbxz.abn.service.dto.search.Operation;
 import com.cbxz.abn.service.dto.search.SearchCriteria;
 import com.cbxz.abn.service.search.predicate.PredicateBuilder;
-import lombok.val;
-
 import jakarta.persistence.criteria.*;
+import lombok.val;
 
 import static com.cbxz.abn.service.search.predicate.PredicateBuilderUtils.*;
 
@@ -29,13 +26,16 @@ public class NotIncludesPredicate implements PredicateBuilder {
                     .where(
                             cb.and(
                                     cb.equal(subRoot.get(RECIPE_TABLE_NAME).get(ID), root.get(ID)),
-                                    cb.like(subRoot.get(criteria.key().getJoinTable()).get(criteria.key().getKeyName()), value)
+                                    cb.like(
+                                            cb.lower(subRoot.get(criteria.key().getJoinTable())
+                                                    .get(criteria.key().getKeyName())),
+                                            value.toLowerCase())
                             )
                     );
             return cb.not(cb.exists(subquery));
         } else {
-            return cb.notLike(root.get(criteria.key().getKeyName()),
-                    value);
+            return cb.notLike(cb.lower(root.get(criteria.key().getKeyName())),
+                    value.toLowerCase());
         }
     }
 }

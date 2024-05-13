@@ -9,9 +9,8 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
   datasource:
-    url: jdbc:postgresql://host.docker.internal:32768/abn-test-assessment-db
-    username: postgres
-    password: postgrespw
+    url: jdbc:h2:mem:recipe
+    username: sa
   jpa:
     show-sql: true
   jackson:
