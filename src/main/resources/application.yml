@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  shutdown: graceful
+springdoc:
+  pathToMatch:
+spring:
+  application:
+    name: abn-test-assessment
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:32768/abn-test-assessment-db
+    username: postgres
+    password: postgrespw
+  jpa:
+    show-sql: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'info,health,metrics'
+
+
+
+
