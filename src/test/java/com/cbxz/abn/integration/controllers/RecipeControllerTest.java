@@ -30,8 +30,6 @@ public class RecipeControllerTest extends BaseTest{
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    private final long DUMMY_ID = Long.MAX_VALUE;
-
     @Test
     @Transactional
     @Rollback
@@ -95,7 +93,11 @@ public class RecipeControllerTest extends BaseTest{
     @Test
     @DisplayName("Trying to get non existing recipe")
     public void notFoundOnGetRequest() throws Exception {
-        mockMvc.perform(get(String.format("/api/v1/recipe/%s", DUMMY_ID)))
+        val id = recipeRepository.save(TestDataBuilder.buildRecipe(
+                List.of(TestDataBuilder.buildIngredient()))
+        ).getId();
+        recipeRepository.deleteById(id);
+        mockMvc.perform(get(String.format("/api/v1/recipe/%s", id)))
                 .andExpect(status().isNotFound());
 
     }
