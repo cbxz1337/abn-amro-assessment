@@ -13,4 +13,5 @@ public record RecipeUpdateRequest(
         @NotBlank String instructions,
         @NotEmpty List<Long> ingredients,
         @NotNull Boolean isVegetarian
-        ) {}
+) {
+}
