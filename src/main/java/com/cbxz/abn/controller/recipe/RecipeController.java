@@ -45,7 +45,7 @@ public interface RecipeController {
 
     @GetMapping("{id}")
     @Operation(description = """
-                gets recipe by Id.
+                Gets recipe by Id.
             """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Recipe obtained"),
@@ -54,11 +54,18 @@ public interface RecipeController {
     RecipeResponse getById(@PathVariable Long id);
 
     @PostMapping
+    @Operation(description = """
+                Creates recipe.
+            """)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Recipe created"),
+            @ApiResponse(responseCode = "404", description = "One or more ingredients not found")
+    })
     BaseCreatedResponse createRecipe(CreateRecipeRequest request);
 
     @DeleteMapping("{id}")
     @Operation(description = """
-                deletes recipe by Id.
+                Deletes recipe by Id.
             """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful deletion"),
@@ -67,11 +74,11 @@ public interface RecipeController {
     void deleteRecipe(@PathVariable(name = "id") Long id);
 
     @Operation(description = """
-                updates recipe by Id.
+                Updates recipe by Id.
             """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful update"),
-            @ApiResponse(responseCode = "404", description = "Recipe not found")
+            @ApiResponse(responseCode = "404", description = "Recipe not found or ingredient not found.")
     })
     @PutMapping()
     void updateRecipe(@RequestBody RecipeUpdateRequest request);

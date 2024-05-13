@@ -12,7 +12,7 @@
 	<artifactId>abn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>abn</name>
-	<description>Test assesment for the ABN</description>
+	<description>Test assessment for the ABN</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
