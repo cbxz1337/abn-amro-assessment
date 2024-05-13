@@ -1,6 +1,7 @@
 package com.cbxz.abn.integration.controllers;
 
 import com.cbxz.abn.controller.model.request.recipe.CreateRecipeRequest;
+import com.cbxz.abn.domain.Ingredient;
 import com.cbxz.abn.repository.IngredientRepository;
 import com.cbxz.abn.repository.RecipeRepository;
 import com.cbxz.abn.utils.TestDataBuilder;
@@ -33,11 +34,16 @@ public class RecipeControllerTest extends BaseTest{
     @Transactional
     @Rollback
     public void createRecipe() throws Exception {
+        val ingredient = Ingredient.builder().name("Ing1").build();
+        val ingredient1 = Ingredient.builder().name("Ing2").build();
+        val createdIng = ingredientRepository.save(ingredient);
+        val createdIng1 = ingredientRepository.save(ingredient1);
+        ingredientRepository.save(ingredient);
         val request = new CreateRecipeRequest(
                 13,
                 "Shaorma",
                 "Cook it well",
-                List.of(1L, 2L),
+                List.of(createdIng.getId(), createdIng1.getId()),
                 false
         );
         val result = mockMvc.perform(post("/api/v1/recipe/")
