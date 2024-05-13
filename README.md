@@ -44,7 +44,7 @@ http://localhost:8080/swagger-ui/index.html
 
 ## Architectural choices
 ### Architecture
-Onion architecture was used to develop this app. Decision was made because of simplicity and scaleablity of this approach.
+Onion architecture was used to develop this app. Decision was made because of simplicity and scalablity of this approach.
 ### Main FrameWorks
 As a Framework Spring Boot 3.x was used because it's widely known leader in Java world and everyone is familiar with it.
 Speaking about persistence, Jpa CriteriaApi approach was used instead of raw JDBC (which I really prefer, especially because of perfomance and Hibernate n+1 select).
