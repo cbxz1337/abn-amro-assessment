@@ -1,7 +1,6 @@
 package com.cbxz.abn.service.search.predicate.impl;
 
 import com.cbxz.abn.domain.Recipe;
-import com.cbxz.abn.service.dto.search.Operation;
 import com.cbxz.abn.service.dto.search.SearchCriteria;
 import com.cbxz.abn.service.search.predicate.PredicateBuilder;
 import jakarta.persistence.criteria.*;
@@ -10,10 +9,6 @@ import lombok.val;
 import static com.cbxz.abn.service.search.predicate.PredicateBuilderUtils.*;
 
 public class IncludesPredicateBuilder implements PredicateBuilder {
-    @Override
-    public Operation getOperation() {
-        return Operation.INCLUDES;
-    }
 
     @Override
     public Predicate getPredicate(CriteriaBuilder cb, Root<Recipe> root, Join<Recipe, Object> child, SearchCriteria criteria) {

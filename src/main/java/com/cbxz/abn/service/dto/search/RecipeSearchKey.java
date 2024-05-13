@@ -9,7 +9,7 @@ public enum RecipeSearchKey {
     INGREDIENT_NAME("INGREDIENT", "name", String.class, "ingredient", RecipeIngredient.class),
     SERVES("RECIPE", "serves", Integer.class, null, null),
     INSTRUCTIONS("RECIPE", "instructions", String.class, null, null),
-    IS_VEGETARIAN("RECIPE", "is_vegetarian", Boolean.class, null, null);
+    IS_VEGETARIAN("RECIPE", "isVegetarian", Boolean.class, null, null);
 
     RecipeSearchKey(String tableName, String keyName, Class<?> type, String joinTable, Class<?> manyToManyTable) {
         this.keyName = keyName;

@@ -48,9 +48,11 @@ public class RecipeServiceImpl implements RecipeService {
         }
         val ingredients = ingredientService.findByIds(dto.ingredients());
         if (ingredients.size() != dto.ingredients().size()) {
+            val passedIngredients = dto.ingredients();
+            passedIngredients.removeAll(ingredients.stream().map(Ingredient::getId).toList());
             throw notFoundException(String.format(
                             "Ingredients with ids %s not exist.",
-                            dto.ingredients().removeAll(ingredients.stream().map(Ingredient::getId).toList())
+                            passedIngredients
                     )
             );
         }
@@ -62,10 +64,11 @@ public class RecipeServiceImpl implements RecipeService {
         logger.info(String.format("Creating Recipe %s", dto.toString()));
         val ingredients = ingredientService.findByIds(dto.ingredients());
         if (ingredients.size() != dto.ingredients().size()) {
+            val passedIngredients = dto.ingredients();
+            passedIngredients.removeAll(ingredients.stream().map(Ingredient::getId).toList());
             throw notFoundException(String.format(
-                            "Ingredients with ids %s not exist.",
-                            dto.ingredients().removeAll(ingredients.stream().map(Ingredient::getId).toList())
-                    )
+                    "Ingredients with ids %s not exist.",
+                    passedIngredients)
             );
         }
         return recipeRepository.save(RecipeMapper.toRecipe(dto, ingredients)).getId();
