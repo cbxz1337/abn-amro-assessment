@@ -39,8 +39,11 @@ public class IngredientControllerTest extends BaseTest {
     @Transactional
     @Rollback
     @DisplayName("Deleting non existing ingredient")
-    public void deleteNonExistingIngredient() throws Exception{
-       mockMvc.perform(delete(String.format("/api/v1/ingredient/%s", 1337)))
+    public void deleteNonExistingIngredient() throws Exception {
+        val ingredient = TestDataBuilder.buildIngredient();
+        val savedId = ingredientRepository.save(ingredient).getId();
+        ingredientRepository.deleteById(savedId);
+        mockMvc.perform(delete(String.format("/api/v1/ingredient/%s", savedId)))
                 .andExpect(status().isNotFound())
                 .andReturn();
     }
@@ -88,7 +91,10 @@ public class IngredientControllerTest extends BaseTest {
     @Rollback
     @DisplayName("Success deleting ingredient")
     public void nonExistingIngredient() throws Exception {
-        val request = TestDataBuilder.buildUpdateIngredientRequest(1337L);
+        val ingredient = TestDataBuilder.buildIngredient();
+        val savedId = ingredientRepository.save(ingredient).getId();
+        ingredientRepository.deleteById(savedId);
+        val request = TestDataBuilder.buildUpdateIngredientRequest(savedId);
         mockMvc.perform(put("/api/v1/ingredient/")
                         .content(objectMapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON))

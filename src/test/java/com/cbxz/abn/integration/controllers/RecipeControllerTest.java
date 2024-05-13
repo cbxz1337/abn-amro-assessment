@@ -30,6 +30,8 @@ public class RecipeControllerTest extends BaseTest{
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    private final long DUMMY_ID = Long.MAX_VALUE;
+
     @Test
     @Transactional
     @Rollback
@@ -93,7 +95,7 @@ public class RecipeControllerTest extends BaseTest{
     @Test
     @DisplayName("Trying to get non existing recipe")
     public void notFoundOnGetRequest() throws Exception {
-        mockMvc.perform(get(String.format("/api/v1/recipe/%s", 1337)))
+        mockMvc.perform(get(String.format("/api/v1/recipe/%s", DUMMY_ID)))
                 .andExpect(status().isNotFound());
 
     }
@@ -111,8 +113,13 @@ public class RecipeControllerTest extends BaseTest{
 
     @Test
     @DisplayName("Trying to delete non existing recipe")
+    @Transactional
+    @Rollback
     public void notFoundOnDeleteRequest() throws Exception {
-        mockMvc.perform(delete(String.format("/api/v1/recipe/%s", 1337)))
+        val recipe = TestDataBuilder.buildRecipe();
+        val savedId = recipeRepository.save(recipe).getId();
+        recipeRepository.deleteById(savedId);
+        mockMvc.perform(delete(String.format("/api/v1/recipe/%s", savedId)))
                 .andExpect(status().isNotFound());
     }
 
@@ -136,8 +143,15 @@ public class RecipeControllerTest extends BaseTest{
 
     @Test
     @DisplayName("Trying to update non existing recipe")
+    @Transactional
+    @Rollback
     public void notFoundOnPutRequest() throws Exception {
-        val request = TestDataBuilder.buildRecipeUpdateRequest();
+        val ingredient = TestDataBuilder.buildIngredient();
+        val savedIngredient = ingredientRepository.save(ingredient);
+        val recipe = TestDataBuilder.buildRecipe(List.of(savedIngredient));
+        val savedId = recipeRepository.save(recipe).getId();
+        recipeRepository.deleteById(savedId);
+        val request = TestDataBuilder.buildRecipeUpdateRequest(savedId, List.of(savedIngredient.getId()));
         mockMvc.perform(put("/api/v1/recipe/")
                 .content(objectMapper.writeValueAsString(request))
                 .contentType(MediaType.APPLICATION_JSON))
