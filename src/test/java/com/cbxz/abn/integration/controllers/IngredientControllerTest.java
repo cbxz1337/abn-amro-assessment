@@ -1,6 +1,6 @@
 package com.cbxz.abn.integration.controllers;
 
-import com.cbxz.abn.repository.IngredientRepository;
+import com.cbxz.abn.repository.ingredient.IngredientRepository;
 import com.cbxz.abn.utils.TestDataBuilder;
 import com.jayway.jsonpath.JsonPath;
 import jakarta.transaction.Transactional;

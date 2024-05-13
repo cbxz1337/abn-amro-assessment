@@ -2,8 +2,8 @@ package com.cbxz.abn.integration.controllers;
 
 import com.cbxz.abn.controller.model.request.recipe.CreateRecipeRequest;
 import com.cbxz.abn.domain.Ingredient;
-import com.cbxz.abn.repository.IngredientRepository;
-import com.cbxz.abn.repository.RecipeRepository;
+import com.cbxz.abn.repository.ingredient.IngredientRepository;
+import com.cbxz.abn.repository.recipe.RecipeRepository;
 import com.cbxz.abn.utils.TestDataBuilder;
 import com.jayway.jsonpath.JsonPath;
 import jakarta.transaction.Transactional;

@@ -1,4 +1,4 @@
-package com.cbxz.abn.repository;
+package com.cbxz.abn.repository.recipe;
 
 public interface RecipeIngredientRepository {
     void deleteByRecipeId(Long recipeId);

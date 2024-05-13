@@ -1,4 +1,4 @@
-package com.cbxz.abn.repository;
+package com.cbxz.abn.repository.recipe;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

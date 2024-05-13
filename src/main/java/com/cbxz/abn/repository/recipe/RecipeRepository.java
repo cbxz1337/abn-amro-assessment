@@ -1,4 +1,4 @@
-package com.cbxz.abn.repository;
+package com.cbxz.abn.repository.recipe;
 
 import com.cbxz.abn.domain.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;

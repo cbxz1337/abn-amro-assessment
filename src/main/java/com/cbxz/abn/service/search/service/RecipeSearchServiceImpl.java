@@ -2,7 +2,7 @@ package com.cbxz.abn.service.search.service;
 
 import com.cbxz.abn.controller.model.request.RecipeSearchRequest;
 import com.cbxz.abn.domain.Recipe;
-import com.cbxz.abn.repository.RecipeRepository;
+import com.cbxz.abn.repository.recipe.RecipeRepository;
 import com.cbxz.abn.service.dto.recipe.PaginatedRecipeDto;
 import com.cbxz.abn.service.dto.search.RecipeSearchKey;
 import com.cbxz.abn.service.dto.search.SearchCriteria;

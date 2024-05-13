@@ -2,8 +2,8 @@ package com.cbxz.abn.unit.service;
 
 import com.cbxz.abn.domain.Recipe;
 import com.cbxz.abn.exception.NotFoundException;
-import com.cbxz.abn.repository.RecipeIngredientRepository;
-import com.cbxz.abn.repository.RecipeRepository;
+import com.cbxz.abn.repository.recipe.RecipeIngredientRepository;
+import com.cbxz.abn.repository.recipe.RecipeRepository;
 import com.cbxz.abn.service.dto.recipe.UpdateRecipeDto;
 import com.cbxz.abn.service.ingredient.IngredientService;
 import com.cbxz.abn.service.recipe.RecipeServiceImpl;

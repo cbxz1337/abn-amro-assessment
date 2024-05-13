@@ -1,6 +1,6 @@
 package com.cbxz.abn.unit.repository;
 
-import com.cbxz.abn.repository.RecipeRepository;
+import com.cbxz.abn.repository.recipe.RecipeRepository;
 import com.cbxz.abn.utils.TestDataBuilder;
 import jakarta.transaction.Transactional;
 import lombok.val;
