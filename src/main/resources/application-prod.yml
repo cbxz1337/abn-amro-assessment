@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:recipe_prod
+    username: sa
+    ##password: should be stored in vault or etc.
+    maximum-pool-size: ##max pool size
+    maximum-idle: ##max idle
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'info,health,metrics'

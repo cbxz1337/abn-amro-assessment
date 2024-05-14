@@ -8,8 +8,8 @@
 		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cbxz</groupId>
-	<artifactId>abn</artifactId>
+	<groupId>com.abn</groupId>
+	<artifactId>recipe-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>abn</name>
 	<description>Test assessment for the ABN</description>
@@ -39,6 +39,19 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.30</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.3.0</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>

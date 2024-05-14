@@ -31,11 +31,20 @@ All these requirements needs to be satisfied:
  ```
   $ mvn package
   ```
-3. Run the project
+3. Run tests
   ```
-  $ java -jar abn-0.0.1-SNAPSHOT.jar
+    $ mvn test
   ```
-4. Open the swagger-ui with the link below
+4. Run the project
+  ```
+  $ java -jar recipe-api-0.0.1-SNAPSHOT.jar
+  ```
+Default application profile is dev, to run application with different profile use.
+Available profiles are dev, acc, tst, prod.
+    ```
+    -Dspring.profiles.active=PROFILE_NAME
+    ```
+5. Open the swagger-ui with the link below
 
 ```text
 http://localhost:8080/swagger-ui/index.html
@@ -44,6 +53,7 @@ http://localhost:8080/swagger-ui/index.html
 ## Architectural choices
 ### Architecture
 Onion architecture was used to develop this app. Decision was made because of simplicity and scalablity of this approach.
+Configs for different environments were created. Default profile is dev.
 ### Frameworks
 As a Framework Spring Boot 3.x was used because it's widely known leader in Java world and everyone is familiar with it.
 Speaking about persistence, Jpa CriteriaApi approach was used instead of raw JDBC (which I really prefer, especially because of perfomance and Hibernate n+1 select).
@@ -55,3 +65,8 @@ Tests written using JUnit and Mockito.
 To make app standalone, H2 in memory DB was used. It can be easely changed to any other relational db.
 ### Test
 Unit tests and Integration tests provided, including DB tests and Controller tests.
+### Scope of improvements
+Elastic search + standalone DB (Postgres SQL for example) could be used to improve the performance.
+Search indexed could be created on selective fields to improve recipe search performance.
+Using non-blocking reactive web server (Netty) instead of Tomcat could also be beneficial.
+It could also be useful to add some caching(Redis, or Spring build-in), to improve response time.
