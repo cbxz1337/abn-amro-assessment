@@ -44,6 +44,7 @@ Available profiles are dev, acc, tst, prod.
     ```
     -Dspring.profiles.active=PROFILE_NAME
     ```
+
 5. Open the swagger-ui with the link below
 
 ```text
