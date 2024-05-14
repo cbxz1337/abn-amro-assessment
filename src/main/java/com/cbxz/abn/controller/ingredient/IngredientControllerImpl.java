@@ -1,6 +1,6 @@
 package com.cbxz.abn.controller.ingredient;
 
-import com.cbxz.abn.controller.ApiMapper;
+import com.cbxz.abn.controller.mapper.IngredientMapper;
 import com.cbxz.abn.controller.model.request.ingredient.CreateIngredientRequest;
 import com.cbxz.abn.controller.model.request.ingredient.UpdateIngredientRequest;
 import com.cbxz.abn.controller.model.response.BaseCreatedResponse;
@@ -22,23 +22,23 @@ public class IngredientControllerImpl implements IngredientController {
 
     @Override
     public IngredientResponse getIngredientById(Long id) {
-        return ApiMapper.toIngredientResponse(ingredientService.findById(id));
+        return IngredientMapper.toIngredientResponse(ingredientService.findById(id));
     }
 
     @Override
     public PaginatedIngredientResponse listIngredients(Integer offset, Integer limit) {
         val pagination = Pagination.builder().limit(limit).offset(offset).build();
-        return ApiMapper.toIngredientPaginatedResponse(ingredientService.listIngredients(pagination));
+        return IngredientMapper.toIngredientPaginatedResponse(ingredientService.listIngredients(pagination));
     }
 
     @Override
     public BaseCreatedResponse createIngredient(CreateIngredientRequest request) {
-        return BaseCreatedResponse.of(ingredientService.create(ApiMapper.toIngredientDto(request)));
+        return BaseCreatedResponse.of(ingredientService.create(IngredientMapper.toIngredientDto(request)));
     }
 
     @Override
     public void updateIngredient(UpdateIngredientRequest request) {
-        ingredientService.update(ApiMapper.toIngredientDto(request));
+        ingredientService.update(IngredientMapper.toIngredientDto(request));
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.cbxz.abn.controller.model.request.RecipeSearchRequest;
 import com.cbxz.abn.controller.model.request.recipe.RecipeUpdateRequest;
 import com.cbxz.abn.controller.model.response.BaseCreatedResponse;
 import com.cbxz.abn.controller.model.response.RecipeResponse;
+import com.cbxz.abn.controller.model.response.SearchKeyResponse;
 import com.cbxz.abn.service.dto.recipe.PaginatedRecipeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +14,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "Recipe controller")
 @RequestMapping("api/v1/recipe/")
@@ -82,4 +85,13 @@ public interface RecipeController {
     })
     @PutMapping()
     void updateRecipe(@RequestBody RecipeUpdateRequest request);
+
+    @Operation(description = """
+                Returns list of available search keys and their types.
+            """)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success"),
+    })
+    @GetMapping("/searchKeys")
+    List<SearchKeyResponse> listSearchKeys();
 }

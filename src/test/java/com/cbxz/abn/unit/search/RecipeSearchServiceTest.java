@@ -8,7 +8,6 @@ import com.cbxz.abn.service.dto.search.Operation;
 import com.cbxz.abn.service.dto.search.RecipeSearchKey;
 import com.cbxz.abn.service.dto.search.SearchCriteria;
 import com.cbxz.abn.service.search.service.RecipeSearchServiceImpl;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -56,7 +55,7 @@ public class RecipeSearchServiceTest {
     @Test
     @DisplayName(value = "wrong param type provided")
     public void wrongTypeProvidedTest() {
-        Assert.assertThrows(IllegalArgumentException.class, () -> service.getPaginatedRecipeDtos(toFailFilter));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> service.getPaginatedRecipeDtos(toFailFilter));
     }
 
     @Test

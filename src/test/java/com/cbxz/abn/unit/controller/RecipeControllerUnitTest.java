@@ -7,7 +7,6 @@ import com.cbxz.abn.service.recipe.RecipeService;
 import com.cbxz.abn.service.search.service.RecipeSearchService;
 import com.cbxz.abn.utils.TestDataBuilder;
 import lombok.val;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -53,6 +52,6 @@ public class RecipeControllerUnitTest {
                         .build()
         );
         val response = recipeController.getRecipesByFilter(request);
-        Assert.assertEquals(response.recipes().getFirst().id().longValue(), id);
+        assertThat(response.recipes().getFirst().id().longValue()).isEqualTo(id);
     }
 }

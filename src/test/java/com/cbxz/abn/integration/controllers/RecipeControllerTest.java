@@ -8,7 +8,6 @@ import com.cbxz.abn.utils.TestDataBuilder;
 import com.jayway.jsonpath.JsonPath;
 import jakarta.transaction.Transactional;
 import lombok.val;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -52,7 +52,7 @@ public class RecipeControllerTest extends BaseTest{
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
         val id = (Integer) JsonPath.read(result.getResponse().getContentAsString(), "$.id");
-        Assert.assertTrue(recipeRepository.findById(id.longValue()).isPresent());
+        assertThat(recipeRepository.findById(id.longValue())).isPresent();
     }
 
     @Test
