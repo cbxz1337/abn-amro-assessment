@@ -31,12 +31,11 @@ All these requirements needs to be satisfied:
  ```
   $ mvn package
   ```
-  ```
-Run the project
+3. Run the project
   ```
   $ java -jar abn-0.0.1-SNAPSHOT.jar
   ```
-3. Open the swagger-ui with the link below
+4. Open the swagger-ui with the link below
 
 ```text
 http://localhost:8080/swagger-ui/index.html
