@@ -39,11 +39,11 @@ All these requirements needs to be satisfied:
   ```
   $ java -jar recipe-api-0.0.1-SNAPSHOT.jar
   ```
-Default application profile is dev, to run application with different profile use.
-Available profiles are dev, acc, tst, prod.
+Default application profile is dev, to run application with different profile use VM option.
     ```
     -Dspring.profiles.active=PROFILE_NAME
     ```
+Available profiles are dev, acc, tst, prod.
 
 5. Open the swagger-ui with the link below
 
