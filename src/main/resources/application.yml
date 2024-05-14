@@ -3,7 +3,7 @@ server:
   shutdown: graceful
 spring:
   application:
-    name: abn-test-assessment
+    name: recipe-api
   profiles:
     default: dev
   liquibase:

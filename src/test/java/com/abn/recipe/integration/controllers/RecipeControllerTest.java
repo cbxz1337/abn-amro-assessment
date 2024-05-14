@@ -6,14 +6,11 @@ import com.abn.recipe.repository.ingredient.IngredientRepository;
 import com.abn.recipe.repository.recipe.RecipeRepository;
 import com.abn.recipe.utils.TestDataBuilder;
 import com.jayway.jsonpath.JsonPath;
-import io.restassured.RestAssured;
 import jakarta.transaction.Transactional;
 import lombok.val;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -32,14 +29,6 @@ public class RecipeControllerTest extends BaseTest{
 
     @Autowired
     private IngredientRepository ingredientRepository;
-
-    @LocalServerPort
-    private int port;
-
-    @Before
-    public void setUp() throws Exception {
-        RestAssured.port = port;
-    }
 
     @Test
     @Transactional
