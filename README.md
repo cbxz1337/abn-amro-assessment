@@ -44,11 +44,13 @@ http://localhost:8080/swagger-ui/index.html
 ## Architectural choices
 ### Architecture
 Onion architecture was used to develop this app. Decision was made because of simplicity and scalablity of this approach.
-### Main FrameWorks
+### Frameworks
 As a Framework Spring Boot 3.x was used because it's widely known leader in Java world and everyone is familiar with it.
 Speaking about persistence, Jpa CriteriaApi approach was used instead of raw JDBC (which I really prefer, especially because of perfomance and Hibernate n+1 select).
 CriteraApi was used to make app more scalable, instead of creating my own framework to build queries. As the result - more object orientated solution.
 You can easly add new Fields as a keys and filter options.
+Swagger was used to create Api documentation.
+Tests written using JUnit and Mockito.
 ### Database
 To make app standalone, H2 in memory DB was used. It can be easely changed to any other relational db.
 ### Test
